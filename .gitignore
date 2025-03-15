@@ -1,0 +1,12 @@
+# Ignore all compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore all files inside data/source and data/processed
+data/source/*
+data/processed/*
+
+# Allow .gitkeep files to be tracked
+!data/source/.gitkeep
+!data/processed/.gitkeep
