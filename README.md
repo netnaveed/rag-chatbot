@@ -27,5 +27,4 @@ streamlit run web.py
 ### APIs
 
 Load Content: GET http://127.0.0.1:5000/load
-
 Ask a Question: POST http://127.0.0.1:5000/chat
