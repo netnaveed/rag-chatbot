@@ -18,13 +18,13 @@ A locally deployed AI-powered chatbot that uses Retrieval-Augmented Generation (
 python api.py
 ```
 
+### APIs
+
+- Load Content: GET http://127.0.0.1:5000/load
+- Ask a Question: POST http://127.0.0.1:5000/chat
+
 ### Start Chatbot Web UI
 
 ```bash
 streamlit run web.py
 ```
-
-### APIs
-
-Load Content: GET http://127.0.0.1:5000/load
-Ask a Question: POST http://127.0.0.1:5000/chat
