@@ -4,7 +4,7 @@ import requests
 # API endpoint of the chatbot
 CHATBOT_API_URL = "http://localhost:5000/chat"
 
-st.set_page_config(page_title="Creative Chaos Bot", page_icon="🤖")
+st.set_page_config(page_title="Chatbot", page_icon="🤖")
 st.title("💬 Creative Chaos Bot")
 st.write("Ask me anything about the company playbook!")
 
