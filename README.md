@@ -12,6 +12,14 @@ A locally deployed AI-powered chatbot that uses Retrieval-Augmented Generation (
 
 ## Getting Started
 
+```bash
+ollama pull mistral
+ollama run mistral
+ollama list
+ollama remove mistral
+ollama run mistral --prompt "Tell me a joke"
+```
+
 ### Start API Server
 
 ```bash
