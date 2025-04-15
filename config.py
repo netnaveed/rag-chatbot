@@ -9,3 +9,5 @@ class Config:
     SECTION_OVERLAP             = 100
     LLM_MODEL                   = "mistral"
     DEBUG                       = True
+    NO_INFORMATION_RESPONSE     = "I'm sorry, but I don't have enough information to answer that."
+    SYSTEM_MESSAGE              = "Based on the following information, answer the user's question in a complete and informative sentence."
