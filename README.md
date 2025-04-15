@@ -28,3 +28,13 @@ python api.py
 ```bash
 streamlit run web.py
 ```
+
+### Ollama Commands
+
+```bash
+ollama pull mistral
+ollama run mistral
+ollama list
+ollama remove mistral
+ollama run mistral --prompt "Tell me a joke"
+```
