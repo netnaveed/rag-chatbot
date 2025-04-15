@@ -12,6 +12,8 @@ A locally deployed AI-powered chatbot that uses Retrieval-Augmented Generation (
 
 ## Getting Started
 
+### Ollama Commands
+
 ```bash
 ollama pull mistral
 ollama run mistral
@@ -35,14 +37,4 @@ python api.py
 
 ```bash
 streamlit run web.py
-```
-
-### Ollama Commands
-
-```bash
-ollama pull mistral
-ollama run mistral
-ollama list
-ollama remove mistral
-ollama run mistral --prompt "Tell me a joke"
 ```
