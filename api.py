@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from chatbot import Chatbot
 from data_processor import DataProcessor
+from config import Config
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -22,7 +23,8 @@ def load_data():
 @app.route("/chat", methods=["POST"])
 def chat():
     user_query = request.json.get("query")
-    result = chatbot.generate_response(user_query)
+    llm = request.json.get("llm", Config.DEFAULT_LLM)
+    result = chatbot.generate_response(user_query, llm)
 
     if "error" in result:
         return jsonify(result), 400

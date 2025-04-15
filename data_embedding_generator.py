@@ -12,7 +12,7 @@ class EmbeddingGenerator:
         self.processed_path = Config.PROCESSED_PATH
         self.faiss_index_path = os.path.join(self.processed_path, "faiss.index")
         self.embeddings_path = os.path.join(self.processed_path, "embeddings.pkl")
-        self.model = SentenceTransformer(Config.SENTENCE_TRANSFORMER_MODEL)
+        self.model = SentenceTransformer(Config.DEFAULT_SENTENCE_TRANSFORMER_MODEL)
         self.index = None
         self.sections = []
         self.load_faiss_index()

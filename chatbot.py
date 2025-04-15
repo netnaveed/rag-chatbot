@@ -11,24 +11,32 @@ class Chatbot:
         self.index = self.embedding_generator.index
         self.sections = self.embedding_generator.sections
     
-    def generate_response(self, user_query):
+    def generate_response(self, user_query, llm):
 
         if self.index is None or not self.sections:
-            return {"error": "Embeddings not found."}
+            return {
+                "error": "Embeddings not found."
+            }
         
         # Retrieve the most relevant section using FAISS
         results = self.embedding_generator.search(user_query, top_k=1)
         if not results:
-            return {"query": user_query, "response": Config.NO_INFORMATION_RESPONSE}
+            return {
+                "query": user_query,
+                "response": Config.NO_INFORMATION_RESPONSE
+            }
         
         relevant_section, _ = results[0]
         
-        # Generate AI response using LLM model
-        response = ollama.chat(model=Config.LLM_MODEL, messages=[
-            {"role": "system", "content": Config.SYSTEM_MESSAGE},
-            {"role": "system", "content": f"Content: {relevant_section}"},
-            {"role": "user", "content": user_query}
-        ])
+        # Generate AI response using LLM
+        response = ollama.chat(
+            model=llm,
+            messages=[
+                {"role": "system", "content": Config.SYSTEM_MESSAGE},
+                {"role": "system", "content": f"Content: {relevant_section}"},
+                {"role": "user", "content": user_query}
+            ]
+        )
         
         return {
             "query": user_query, 

@@ -11,7 +11,7 @@ class SectionCreator:
     def __init__(self):
         self.sections_output = os.path.join(Config.PROCESSED_PATH, "sections.txt")
 
-    def create_sections(self, text, max_chars=Config.SECTION_LENGTH, overlap=Config.SECTION_OVERLAP):
+    def create_sections(self, text, max_chars=Config.DEFAULT_SECTION_LENGTH, overlap=Config.DEFAULT_SECTION_OVERLAP):
         """Splits text into overlapping sections based on sentences for better context retention."""
         sentences = sent_tokenize(text)
         sections = []

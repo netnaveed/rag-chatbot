@@ -5,8 +5,8 @@ import requests
 CHATBOT_API_URL = "http://localhost:5000/chat"
 
 st.set_page_config(page_title="Chatbot", page_icon="🤖")
-st.title("💬 Creative Chaos Bot")
-st.write("Ask me anything about the company playbook!")
+st.title("💬 Chatbot")
+st.write("Ask me anything about the provided content!")
 
 # Store chat history
 if "messages" not in st.session_state:
@@ -18,7 +18,7 @@ for msg in st.session_state.messages:
         st.markdown(msg["content"])
 
 # User input
-user_input = st.chat_input("Ask me anything about the company...")
+user_input = st.chat_input("Ask me anything about the provided content!")
 
 if user_input:
     # Display user message
