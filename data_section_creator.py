@@ -1,5 +1,4 @@
 import os
-import nltk
 from config import Config
 from nltk.tokenize import sent_tokenize
 
