@@ -1,9 +1,6 @@
 import os
 import nltk
 from config import Config
-
-# Ensure NLTK punkt tokenizer is available
-nltk.download('punkt')
 from nltk.tokenize import sent_tokenize
 
 class SectionCreator:

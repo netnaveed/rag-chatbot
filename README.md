@@ -12,29 +12,39 @@ A locally deployed AI-powered chatbot that uses Retrieval-Augmented Generation (
 
 ## Getting Started
 
-### Ollama Commands
-
+### Ollama & LLM Setup
+- Install Ollama: https://ollama.com/download
+- Run this in terminal to pull required models:
 ```bash
 ollama pull mistral
+ollama pull llama2
+ollama pull your-custom-model-name
+```
+- Make sure Ollama is running in the background before you start the chatbot.
+
+### Ollama other commands
+```bash
 ollama run mistral
 ollama list
 ollama remove mistral
 ollama run mistral --prompt "Tell me a joke"
 ```
 
-### Start API Server
+### Installation of required python packages
+```bash
+python install_requirements.py
+```
 
+### Start API Server
 ```bash
 python api.py
 ```
 
 ### APIs
-
 - Load Content: GET http://127.0.0.1:5000/load
 - Ask a Question: POST http://127.0.0.1:5000/chat
 
 ### Start Chatbot Web UI
-
 ```bash
 streamlit run web.py
 ```

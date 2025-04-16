@@ -10,7 +10,7 @@ class Config:
     NO_INFORMATION_RESPONSE             = "I'm sorry, but I don't have enough information to answer that."
     SYSTEM_MESSAGE                      = "Based on the following information, answer the user's question in a complete and informative sentence."
 
-    DEFAULT_SENTENCE_TRANSFORMER_MODEL  = "sentence-transformers/all-mpnet-base-v2"
     DEFAULT_SECTION_LENGTH              = 500
     DEFAULT_SECTION_OVERLAP             = 100
+    DEFAULT_SENTENCE_TRANSFORMER_MODEL  = "sentence-transformers/all-mpnet-base-v2"
     DEFAULT_LLM                         = "llama3.2" # mistral, deepseek-r1, llama3.2
