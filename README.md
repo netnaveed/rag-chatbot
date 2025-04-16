@@ -24,10 +24,10 @@ ollama pull your-custom-model-name
 
 ### Ollama other commands
 ```bash
-ollama run mistral
 ollama list
-ollama remove mistral
+ollama run mistral
 ollama run mistral --prompt "Tell me a joke"
+ollama remove mistral
 ```
 
 ### Installation of required python packages
@@ -40,11 +40,11 @@ python install_requirements.py
 python api.py
 ```
 
-### APIs
-- Load Content: GET http://127.0.0.1:5000/load
-- Ask a Question: POST http://127.0.0.1:5000/chat
-
 ### Start Chatbot Web UI
 ```bash
 streamlit run web.py
 ```
+
+### APIs
+- Load Content: GET http://127.0.0.1:5000/load
+- Ask a Question: POST http://127.0.0.1:5000/chat
