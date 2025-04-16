@@ -2,14 +2,20 @@ import os
 import pickle
 import faiss
 import numpy as np
+from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer
+import fitz  # PyMuPDF for PDFs
+from docx import Document
 from config import Config
 
 
 class EmbeddingGenerator:
     
     def __init__(self):
+        self.source_path = Config.SOURCE_PATH
         self.processed_path = Config.PROCESSED_PATH
+        self.text_output = os.path.join(self.processed_path, "text.txt")
+        self.sections_output = os.path.join(Config.PROCESSED_PATH, "sections.txt")
         self.faiss_index_path = os.path.join(self.processed_path, "faiss.index")
         self.embeddings_path = os.path.join(self.processed_path, "embeddings.pkl")
         self.model = SentenceTransformer(Config.DEFAULT_SENTENCE_TRANSFORMER_MODEL)
@@ -17,6 +23,67 @@ class EmbeddingGenerator:
         self.sections = []
         self.load_faiss_index()
         self.load_embeddings()
+
+    def extract_data(self):
+        
+        if not os.path.exists(self.source_path):
+            raise FileNotFoundError(f"Base path not found: {self.source_path}")
+
+        extracted_texts = []
+
+        for file_name in os.listdir(self.source_path):
+            file_path = os.path.join(self.source_path, file_name)
+
+            if file_name.endswith(".docx"):
+                doc = Document(file_path)
+                text = "\n".join([para.text for para in doc.paragraphs if para.text.strip()])
+            elif file_name.endswith(".txt"):
+                with open(file_path, "r", encoding="utf-8") as f:
+                    text = f.read()
+            elif file_name.endswith(".pdf"):
+                pdf_doc = fitz.open(file_path)
+                text = "\n".join([page.get_text("text") for page in pdf_doc])
+            else:
+                continue  # Skip unsupported files
+
+            if text.strip():
+                extracted_texts.append(f"### Extracted from {file_name} ###\n{text}\n")
+
+        if not extracted_texts:
+            raise ValueError("No valid text content found in the given documents.")
+
+        full_text = "\n".join(extracted_texts)
+
+        # Save extracted text
+        with open(self.text_output, "w", encoding="utf-8") as output_file:
+            output_file.write(full_text)
+
+        return full_text
+
+    def create_sections(self, text, max_chars=Config.DEFAULT_SECTION_LENGTH, overlap=Config.DEFAULT_SECTION_OVERLAP):
+        """Splits text into overlapping sections based on sentences for better context retention."""
+        sentences = sent_tokenize(text)
+        sections = []
+        current_section = ""
+
+        for sentence in sentences:
+            if len(current_section) + len(sentence) <= max_chars:
+                current_section += " " + sentence
+            else:
+                sections.append(current_section.strip())
+                # Add overlap from end of previous section
+                overlap_text = " ".join(current_section.strip().split()[-(overlap // 10):])
+                current_section = overlap_text + " " + sentence
+
+        if current_section:
+            sections.append(current_section.strip())
+
+        # Save sections
+        with open(self.sections_output, "w", encoding="utf-8") as output_file:
+            for section in sections:
+                output_file.write(section + "\n###\n")
+
+        return sections
 
     def generate_embeddings(self, sections):
         """Encodes text sections into vector embeddings."""
