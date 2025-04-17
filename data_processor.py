@@ -1,15 +1,15 @@
 import os
 import pickle
 import faiss
+import fitz
 import numpy as np
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer
-import fitz  # PyMuPDF for PDFs
 from docx import Document
 from config import Config
 
 
-class EmbeddingGenerator:
+class DataProcessor:
     
     def __init__(self):
         self.source_path = Config.SOURCE_PATH

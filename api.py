@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from config import Config
-from data_embedding_generator import EmbeddingGenerator
+from data_processor import DataProcessor
 from chatbot_manager import ChatbotManager
 
 # Initialize Flask app
@@ -16,13 +16,13 @@ def load_api():
     generate and save embeddings, and reload chatbot.
     """
     try:
-        embedding_generator = EmbeddingGenerator()
+        data_processor = DataProcessor()
 
-        text = embedding_generator.extract_data()
-        sections = embedding_generator.create_sections(text)
-        embeddings = embedding_generator.generate_embeddings(sections)
-        embedding_generator.create_faiss_index(embeddings)
-        embedding_generator.save_embeddings(sections, embeddings)
+        text = data_processor.extract_data()
+        sections = data_processor.create_sections(text)
+        embeddings = data_processor.generate_embeddings(sections)
+        data_processor.create_faiss_index(embeddings)
+        data_processor.save_embeddings(sections, embeddings)
 
         # Reload the chatbot to pick up updated index and sections
         chatbot_manager.reload_chatbot()

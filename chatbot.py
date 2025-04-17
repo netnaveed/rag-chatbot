@@ -1,5 +1,5 @@
 import ollama
-from data_embedding_generator import EmbeddingGenerator
+from data_processor import DataProcessor
 from config import Config
 
 class Chatbot:
@@ -7,9 +7,9 @@ class Chatbot:
     def __init__(self):
 
         self.source_path = Config.SOURCE_PATH
-        self.embedding_generator = EmbeddingGenerator()
-        self.index = self.embedding_generator.index
-        self.sections = self.embedding_generator.sections
+        self.data_processor = DataProcessor()
+        self.index = self.data_processor.index
+        self.sections = self.data_processor.sections
     
     def generate_response(self, user_query, llm):
 
@@ -19,7 +19,7 @@ class Chatbot:
             }
         
         # Retrieve the most relevant section using FAISS
-        results = self.embedding_generator.search(user_query, top_k=1)
+        results = self.data_processor.search(user_query, top_k=1)
         if not results:
             return {
                 "query": user_query,
