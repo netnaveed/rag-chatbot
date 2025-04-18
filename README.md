@@ -1,4 +1,4 @@
-# Chatbot
+# RAG-Based Chatbot
 A locally deployed AI-powered chatbot that uses Retrieval-Augmented Generation (RAG) for accurate, context-aware responses based on your own documents.
 
 ## Features
@@ -19,14 +19,6 @@ ollama pull llama2
 ollama pull your-custom-model-name
 ```
 - Make sure Ollama is running in the background before you start the chatbot.
-
-### Ollama other commands
-```bash
-ollama list
-ollama run mistral
-ollama run mistral --prompt "Tell me a joke"
-ollama remove mistral
-```
 
 ### Installation of required python packages
 ```bash
