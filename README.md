@@ -12,7 +12,7 @@ A locally deployed AI-powered chatbot that uses Retrieval-Augmented Generation (
 
 ### Ollama & LLM Setup
 - Install Ollama: https://ollama.com/download
-- Run this in terminal to pull required models:
+- Run in terminal to pull required models:
 ```bash
 ollama pull mistral
 ollama pull llama2
