@@ -19,7 +19,7 @@ class Chatbot:
             }
         
         # Retrieve the most relevant section using FAISS
-        results = self.data_processor.search(user_query, top_k=1)
+        results = self.data_processor.search(user_query, top_k=Config.TOP_K_RESULTS)
         if not results:
             return {
                 "query": user_query,

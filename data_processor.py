@@ -14,10 +14,10 @@ class DataProcessor:
     def __init__(self):
         self.source_path = Config.SOURCE_PATH
         self.processed_path = Config.PROCESSED_PATH
-        self.text_output = os.path.join(self.processed_path, "text.txt")
-        self.sections_output = os.path.join(Config.PROCESSED_PATH, "sections.txt")
-        self.faiss_index_path = os.path.join(self.processed_path, "faiss.index")
-        self.embeddings_path = os.path.join(self.processed_path, "embeddings.pkl")
+        self.text_output = Config.TEXT_FILE
+        self.sections_output = Config.SECTIONS_FILE
+        self.faiss_index_path = Config.FAISS_INDEX_FILE
+        self.embeddings_path = Config.EMBEDDINGS_FILE
         self.model = SentenceTransformer(Config.DEFAULT_SENTENCE_TRANSFORMER_MODEL)
         self.index = None
         self.sections = []
