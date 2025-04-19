@@ -127,7 +127,6 @@ class Processor:
         return results
     
     def generate_response(self, user_query, llm):
-
         # Retrieve the most relevant section using FAISS
         results = self.search(user_query, Config.DEFAULT_TOP_K_RESULTS)
         

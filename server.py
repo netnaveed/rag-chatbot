@@ -1,5 +1,4 @@
 import os
-import ollama
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 from config import Config
