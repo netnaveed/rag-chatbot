@@ -20,19 +20,14 @@ ollama pull your-custom-model-name
 ```
 - Make sure Ollama is running in the background before you start the chatbot.
 
-### Installation of required python packages
+### Installation of required python packages and verify ollama installation verification
 ```bash
-python install_requirements.py
+python install.py
 ```
 
 ### Start API Server
 ```bash
-python api.py
-```
-
-### Start Chatbot Web UI
-```bash
-streamlit run web.py
+python server.py
 ```
 
 ### APIs

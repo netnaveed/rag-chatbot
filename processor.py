@@ -9,7 +9,6 @@ from sentence_transformers import SentenceTransformer
 from docx import Document
 from config import Config
 
-
 class Processor:
     
     def __init__(self):
