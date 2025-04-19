@@ -4,7 +4,6 @@ from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 from config import Config
 from processor import Processor
-from chat import Chat
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -24,15 +23,15 @@ def load_api():
 
 @app.route("/chat", methods=["POST"])
 def chat_api():
-    user_query = request.json.get("query")
-    llm = request.json.get("llm", Config.DEFAULT_LLM)
-
-    if not user_query:
-        return jsonify({"error": "Query is required."}), 400
-
     try:
-        chat = Chat()
-        result = chat.generate_response(user_query, llm)
+        user_query = request.json.get("query")
+        llm = request.json.get("llm", Config.DEFAULT_LLM)
+
+        if not user_query:
+            return jsonify({"error": "Query is required."}), 400
+
+        processor = Processor()
+        result = processor.generate_response(user_query, llm)
 
         if "error" in result:
             return jsonify(result), 400
