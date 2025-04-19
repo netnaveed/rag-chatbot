@@ -9,7 +9,7 @@ from docx import Document
 from config import Config
 
 
-class DataProcessor:
+class Processor:
     
     def __init__(self):
         self.source_path = Config.SOURCE_PATH
@@ -115,7 +115,7 @@ class DataProcessor:
             with open(self.embeddings_path, "rb") as input_file:
                 self.sections, _ = pickle.load(input_file)
 
-    def search(self, query, top_k=5):
+    def search(self, query, top_k):
         """Finds the most similar sections to the given query."""
         if self.index is None or len(self.sections) == 0:
             return []
