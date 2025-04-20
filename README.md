@@ -1,4 +1,4 @@
-# RAG-Based Chatbot
+# RAG Chatbot
 A locally deployed AI-powered chatbot that uses Retrieval-Augmented Generation (RAG) for accurate, context-aware responses based on your own documents.
 
 ## Features
