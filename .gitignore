@@ -4,9 +4,9 @@ __pycache__/
 *.pyo
 
 # Ignore all files inside data/source and data/processed
-data/source/*
-data/processed/*
+data/documents/*
+data/embeddings/*
 
 # Allow .gitkeep files to be tracked
-!data/source/.gitkeep
-!data/processed/.gitkeep
+!data/documents/.gitkeep
+!data/embeddings/.gitkeep

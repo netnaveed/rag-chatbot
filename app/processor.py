@@ -7,7 +7,7 @@ import numpy as np
 from nltk.tokenize import sent_tokenize
 from sentence_transformers import SentenceTransformer
 from docx import Document
-from config import Config
+from .config import Config
 
 class Processor:
     

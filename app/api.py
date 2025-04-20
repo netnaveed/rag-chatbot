@@ -1,8 +1,8 @@
 import os
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
-from config import Config
-from processor import Processor
+from .config import Config
+from .processor import Processor
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -95,6 +95,3 @@ def chat_api():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=Config.DEBUG)

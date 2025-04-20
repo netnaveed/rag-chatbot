@@ -3,9 +3,9 @@ import os
 class Config:
     
     DEBUG                               = True
-    BASE_DIR                            = os.path.abspath(os.path.join(os.path.dirname(__file__)))
-    SOURCE_PATH                         = os.path.join(BASE_DIR, "source")
-    PROCESSED_PATH                      = os.path.join(BASE_DIR, "processed")
+    BASE_DIR                            = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    SOURCE_PATH                         = os.path.join(BASE_DIR, "data", "documents")
+    PROCESSED_PATH                      = os.path.join(BASE_DIR, "data", "embeddings")
     TEXT_FILE                           = os.path.join(PROCESSED_PATH, "text.txt")
     SECTIONS_FILE                       = os.path.join(PROCESSED_PATH, "sections.txt")
     FAISS_INDEX_FILE                    = os.path.join(PROCESSED_PATH, "faiss.index")
