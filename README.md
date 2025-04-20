@@ -10,11 +10,6 @@ A locally deployed AI-powered chatbot that uses Retrieval-Augmented Generation (
 
 ## Getting Started
 
-### Run following to check if required packages are installed.
-```bash
-python requirements_check.py
-```
-
 ### Ollama & LLM Setup
 - Install Ollama: https://ollama.com/download
 - Run in terminal to pull required models:
@@ -25,10 +20,10 @@ ollama pull your-custom-model-name
 ```
 - Make sure Ollama is running in the background before you start the chatbot.
 
-### Install required Python packages and verify Ollama installation.
+### Install required Python packages and verify other installations.
 ```bash
 pip install -r requirements.txt
-python setup.py
+python requirements_check.py
 ```
 ### Start API Server
 ```bash
