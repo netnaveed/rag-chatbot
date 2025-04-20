@@ -1,0 +1,6 @@
+nltk
+faiss-cpu
+sentence-transformers
+streamlit
+flask
+numpy
